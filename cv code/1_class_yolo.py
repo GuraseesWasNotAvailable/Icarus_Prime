@@ -6,7 +6,7 @@ import time
 model = YOLO('yolov8n.pt')  # You can also use yolov8s.pt, yolov8m.pt, etc.
 
 # Open webcam (use 0) or replace with a video file path
-cap = cv2.VideoCapture(2)
+cap = cv2.VideoCapture(1)
 
 # Cell phone class index in COCO dataset
 CELL_PHONE_CLASS_ID = 67
