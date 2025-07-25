@@ -1,9 +1,15 @@
 from ultralytics import YOLO
 import cv2
 import time
+import torch
+
+print(f"CUDA: {torch.cuda.is_available()}")
+if torch.cuda.is_available():
+    print(f"GPU: {torch.cuda.get_device_name}")
 
 # Load the YOLOv8 model
 model = YOLO('yolov8n.pt')  # You can also use yolov8s.pt, yolov8m.pt, etc.
+model.to('cuda')
 
 # Open webcam (use 0) or replace with a video file path
 cap = cv2.VideoCapture(1)
@@ -23,7 +29,7 @@ while True:
     start_time = time.time()
 
     # Run YOLOv8 inference
-    results = model(frame, verbose=False)[0]
+    results = model(frame, device='cuda',classes=[CELL_PHONE_CLASS_ID], verbose=False)[0]
     end_time = time.time()
     # print(end_time-start_time)
     # Loop through detections
@@ -41,7 +47,7 @@ while True:
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
 
             print(f'Cell Phone Centroid: ({cx}, {cy})')
-        print(end_time-start_time)
+        #print(end_time-start_time)
     # Calculate and display FPS
     end_time = time.time()
     fps = 1 / (end_time - prev_time) if prev_time != 0 else 0
