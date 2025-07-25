@@ -1,10 +1,15 @@
 import cv2
 import time
+import torch
 from ultralytics import YOLO
-
 # Load your trained YOLOv8 model
+<<<<<<< HEAD
 model = YOLO("my_model.pt")
+=======
+>>>>>>> 9d921c57bd7a543b6c2a38471ef31359dd780445
 
+model = YOLO( "best.pt")
+model.to('cuda')
 # Start webcam
 cap = cv2.VideoCapture(0)
 
@@ -15,7 +20,7 @@ while True:
 
     stime = time.time()
     # Run inference
-    results = model.predict(source=frame, conf=0.8, save=False, verbose=False)
+    results = model.predict(source=frame, conf=0.8, save=False, verbose=False, device = 'cuda')
     etime = time.time()
 
     # Loop through detections
