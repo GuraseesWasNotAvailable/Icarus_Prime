@@ -7,7 +7,7 @@ from ultralytics import YOLO
 model = YOLO( "best.pt")
 model.to('cuda')
 # Start webcam
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 
 while True:
     ret, frame = cap.read()
