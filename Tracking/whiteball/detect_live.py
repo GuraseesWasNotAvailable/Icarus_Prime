@@ -3,10 +3,10 @@ import time
 from ultralytics import YOLO
 
 # Load your trained YOLOv8 model
-model = YOLO("best.pt")
+model = YOLO("my_model.pt")
 
 # Start webcam
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 
 while True:
     ret, frame = cap.read()
