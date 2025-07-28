@@ -156,6 +156,18 @@ int matInv_2x2(float A[2][2], float B[2][2]) {
     return 0;
 }
 
+// C = A * B (4x4 * 4x2 = 4x2)
+void matMul_4x4_4x2(float A[4][4], float B[4][2], float C[4][2]) {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 2; j++) {
+            C[i][j] = 0;
+            for (int k = 0; k < 4; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+}
+
 class KalmanFilter {
 public:
     float dt;
