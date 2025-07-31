@@ -70,7 +70,7 @@ private:
 
 KalmanFilter kf;
 
-float Kp = 0.08, Ki = 0.01, Kd = 0.05;
+float Kp = 0.08, Ki = 0.01, Kd = 0.1;
 float integral_x = 0, prev_error_x = 0;
 float integral_y = 0, prev_error_y = 0;
 
